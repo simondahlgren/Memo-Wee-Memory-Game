@@ -1,0 +1,110 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>Sub_6</RootNamespace>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\**" />
+    <EmbeddedResource Remove="Data\**" />
+    <None Remove="Data\**" />
+    <Page Remove="Data\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Media\123.mp3" />
+    <None Remove="Media\123.wav" />
+    <None Remove="Media\animal-icn-withtxt.png" />
+    <None Remove="Media\baseline_toggle_off_black_24dp.png" />
+    <None Remove="Media\bg_1600.png" />
+
+    <None Remove="Media\Frame_19.png" />
+
+    <None Remove="Media\Frame_19_1.png" />
+
+    <None Remove="Media\back-button.png" />
+    <None Remove="Media\bugsbunny.png" />
+    <None Remove="Media\memowee-b4wink.png" />
+
+    <None Remove="Media\memowee-bckgrnd.png" />
+
+    <None Remove="Media\memowee-flaglo.png" />
+    <None Remove="Media\memowee-front.png" />
+    <None Remove="Media\memowee-graph.png" />
+    <None Remove="Media\memowee-icon.png" />
+    <None Remove="Media\memowee-inhale.png" />
+    <None Remove="Media\memowee-photo.png" />
+    <None Remove="Media\memowee-quit-to-menu.png" />
+    <None Remove="Media\memowee-sad-silent.png" />
+    <None Remove="Media\memowee-toot.png" />
+    <None Remove="Media\memowee-txt.png" />
+    <None Remove="Media\memowee-winkwflag.png" />
+    <None Remove="Media\music-icn-withtxt.png" />
+    <None Remove="Media\roadrunner.png" />
+    <None Remove="Media\scifi-icn-withtxt.png" />
+    <None Remove="Media\settings-icn.png" />
+    <None Remove="Views\explosion-transparent-clipart-pictures-9.png" />
+    <None Remove="Views\memowee-playagain.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" NoWarn="NU1701" />
+    <PackageReference Include="Npgsql" Version="5.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommonServiceLocator" Version="2.0.6" />
+    <PackageReference Include="MvvmLight" Version="5.4.1.1" />
+    <PackageReference Include="WpfAnimatedGif" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Media\123.mp3" />
+    <Resource Include="Media\123.wav" />
+    <Resource Include="Media\animal-icn-withtxt.png" />
+    <Resource Include="Media\bg_1600.png" />
+    <Resource Include="Media\Frame_19.png" />
+    <Resource Include="Media\Frame_19_1.png" />
+    <Resource Include="Media\memowee-b4wink.png" />
+    <Resource Include="Media\memowee-flaglo.png" />
+    <Resource Include="Media\memowee-quit-to-menu.png" />
+    <Resource Include="Media\memowee-winkwflag.png" />
+
+    <Resource Include="Media\back-button.png" />
+    <Resource Include="Media\bugsbunny.png" />
+
+    <Resource Include="Media\memowee-front.png" />
+    <Resource Include="Media\memowee-icon.png" />
+    <Resource Include="Media\memowee-inhale.png" />
+    <Resource Include="Media\memowee-photo.png" />
+    <Resource Include="Media\memowee-graph.png" />
+    <Resource Include="Media\memowee-sad-silent.png" />
+    <Resource Include="Media\memowee-toot.png" />
+    <Resource Include="Media\memowee-txt.png" />
+    <Resource Include="Media\music-icn-withtxt.png" />
+    <Resource Include="Media\memowee-bckgrnd.png" />
+    <Resource Include="Media\roadrunner.png" />
+    <Resource Include="Media\scifi-icn-withtxt.png" />
+    <Resource Include="Media\settings-icn.png" />
+    <Resource Include="Media\memowee-playagain.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

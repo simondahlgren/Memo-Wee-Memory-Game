@@ -1,0 +1,90 @@
+﻿<UserControl x:Class="Sub_6.Views.GameOverView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Sub_6.Views" xmlns:viewmodels="clr-namespace:Sub_6.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:GameOverViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="1080" d:DesignWidth="1920">
+    <Grid>
+
+
+
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="500" />
+            <ColumnDefinition />
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+        <Viewbox Grid.Column="1" Grid.Row="0">
+
+            <StackPanel >
+
+
+                <Label Content="CONGRATS!" Foreground="OrangeRed"  FontSize="40" FontFamily="Comic Sans MS"  FontWeight="ExtraBold"/>
+
+
+
+
+
+
+
+            </StackPanel>
+
+
+        </Viewbox>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="You finished the memowee-memory!" Foreground="OrangeRed"  FontSize="40" FontFamily="Comic Sans MS"  FontWeight="ExtraBold" HorizontalAlignment="Center"/>
+
+            <Viewbox Grid.Column="1" Grid.Row="1">
+                <Grid Width="296" Height="244" >
+                    <Grid.Background>
+                        <ImageBrush ImageSource="/Media/memowee-playagain.png"/>
+                    </Grid.Background>
+                    <Grid.InputBindings>
+                        <MouseBinding Gesture="LeftClick" Command="{Binding PlayAgainNavigate}"/>
+                    </Grid.InputBindings>
+                </Grid>
+
+              
+
+            </Viewbox>
+        </Grid>
+
+        <Viewbox Grid.Row="1" Grid.Column="3">
+            <StackPanel>
+                <Image Source="/Media/memowee-winkwflag.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-56.232"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+            </StackPanel>
+
+        </Viewbox>
+
+
+
+
+
+        <Grid.Background>
+            <ImageBrush ImageSource="{Binding BackGroundByGenre, UpdateSourceTrigger=PropertyChanged}" Stretch="Fill" Opacity="0.65" />
+        </Grid.Background>
+
+    </Grid>
+</UserControl>

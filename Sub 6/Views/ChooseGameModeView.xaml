@@ -1,0 +1,104 @@
+﻿<UserControl x:Class="Sub_6.Views.ChooseGameModeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Sub_6.Views" 
+             xmlns:viewmodels="clr-namespace:Sub_6.ViewModels" xmlns:cvt="clr-namespace:Sub_6.Converters" d:DataContext="{d:DesignInstance Type=viewmodels:ChooseGameModeViewModel}"
+             mc:Ignorable="d" 
+             Background="AntiqueWhite"
+             d:DesignHeight="1080" d:DesignWidth="1920">
+    <UserControl.Resources>
+
+        <cvt:NullBindingConverter x:Key="nullBindingConverter"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="850"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="900"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Viewbox Grid.Row="1" Grid.Column="0" Margin="0,10,0,0" VerticalAlignment="Top"  MaxHeight="120">
+
+            <Button x:Name="btn_Back"  Command="{Binding GoBackCommand}" Background="{x:Null}" BorderBrush="{x:Null}" >
+
+                <Button.Content>
+                    <Image Source="\Media\back-button.png"/>
+                </Button.Content>
+            </Button>
+        </Viewbox>
+        <Label Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Choose Game Mode!" FontFamily="Comic Sans MS" FontWeight="SemiBold" Foreground="#F45D01" FontSize="70" Margin="101,5,0,0" Height="96" Grid.Row="1">
+            <Label.BitmapEffect>
+                <DropShadowBitmapEffect ShadowDepth="1" Direction="360" Color="Black" Opacity="0.8" Softness="0.15" />
+            </Label.BitmapEffect>
+
+        </Label>
+        <Button x:Name="btn_Time" Grid.Row="1" Grid.Column="1"   Height="120" Width="280" Content="Time&#x0a;Trial" FontFamily="Comic Sans MS" FontSize="35" Foreground="#C02A2C" FontWeight="Bold" Command="{Binding ChooseTimeGameCommand}" Margin="138,655,482,75">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Rectangle Fill="DarkOrange" Stroke="OrangeRed" StrokeThickness="3"/>
+                        <Image Source="\Media\roadrunner.png" HorizontalAlignment="Right" Height="100" Margin="0,0,10,0" />
+                        <ContentPresenter HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+            <Button.BitmapEffect>
+                <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="20" Opacity="0.7" />
+            </Button.BitmapEffect>
+        </Button>
+        <Button x:Name="btn_Casual" Grid.Row="1" Grid.Column="1"  Height="120" Width="280" Content="Casual" FontFamily="Comic Sans MS" FontSize="35" Foreground="#C02A2C" FontWeight="Bold" Command="{Binding ChooseCasualGameCommand}" Margin="482,655,138,75">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Rectangle Fill="DarkOrange" Stroke="OrangeRed" StrokeThickness="3"/>
+                        <Image Source="\Media\bugsbunny.png" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="180" Stretch="Fill" Margin="0,5,0,0" />
+                        <ContentPresenter HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,20,0" />
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+            <Button.BitmapEffect>
+                <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="20" Opacity="0.7" />
+            </Button.BitmapEffect>
+        </Button>
+        <Grid Grid.Column="1" Grid.Row="1" Margin="91,112,100,222" Background="AliceBlue" >
+            <Viewbox Margin="2,1,0,0">
+                <StackPanel Orientation="Vertical" Height="338" Width="467">
+                    <TextBlock TextWrapping="Wrap" FontFamily="Comic Sans MS" Foreground="#095E9E" Padding="10,2,10,10"  Opacity="100" Text=" Time Trial  = Get as many matches as you can before the timer runs out!" Height="24" FontSize="11" FontStretch="Normal" TextTrimming="CharacterEllipsis" Width="400">
+                        <TextBlock.BitmapEffect>
+                            <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.7" />
+                        </TextBlock.BitmapEffect>
+                    </TextBlock>
+                    <Viewbox MaxHeight="90">
+                    <Image Source="{Binding NoMatchCardByGenre, UpdateSourceTrigger=PropertyChanged}" Stretch="UniformToFill"/>
+                    </Viewbox>
+                    <TextBlock TextWrapping="Wrap" FontFamily="Comic Sans MS" Foreground="#095E9E" Padding="10,2,10,10"  Opacity="100"  HorizontalAlignment="Center" Margin="5,5,5,5" Text="Two sound cards can NOT be matched together!" Height="19" FontSize="11">
+                        <TextBlock.BitmapEffect>
+                            <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.7" />
+                        </TextBlock.BitmapEffect>
+                    </TextBlock>
+                    <Viewbox MaxHeight="90">
+                    <Image Source="{Binding MatchCardByGenre, UpdateSourceTrigger=PropertyChanged}" Stretch="UniformToFill"/>
+                   </Viewbox> 
+                    <TextBlock TextWrapping="Wrap" FontFamily="Comic Sans MS" Foreground="#095E9E"  Opacity="100"  HorizontalAlignment="Center"  Text="A match is made when an image is paired with its correct sound!" Height="19" FontSize="11">
+                        <TextBlock.BitmapEffect>
+                            <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.7" />
+                        </TextBlock.BitmapEffect>
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap"  FontFamily="Comic Sans MS" Foreground="#095E9E"  Width="331" Height="84" FontSize="11" >
+                        <TextBlock.BitmapEffect>
+                            <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.7" />
+                        </TextBlock.BitmapEffect><Run Text="     The faster you match cards, the more points you get!"/><LineBreak/><Run Text="         ***Will your score make it in to the top 5?!***"/><LineBreak/><Run Text=" "/><LineBreak/><Run Text="Casual Mode is a game played with no time limit and no score,"/><LineBreak/><Run Text="                    just for the fun of MemoWee!"/></TextBlock>
+                </StackPanel>
+            </Viewbox>
+        </Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="{Binding BackGroundByGenre, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource nullBindingConverter}}" Stretch="Fill" Opacity="0.65" />
+        </Grid.Background>
+    </Grid>
+</UserControl>

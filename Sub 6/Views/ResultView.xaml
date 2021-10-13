@@ -1,0 +1,97 @@
+﻿<UserControl x:Class="Sub_6.Views.ResultView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Sub_6.Views" xmlns:viewmodels="clr-namespace:Sub_6.ViewModels" xmlns:cvt="clr-namespace:Sub_6.Converters" d:DataContext="{d:DesignInstance Type=viewmodels:ResultViewModel}"
+             mc:Ignorable="d" 
+              xmlns:gif="http://wpfanimatedgif.codeplex.com"
+             d:DesignHeight="1080" d:DesignWidth="1920">
+    <UserControl.Resources>
+        <cvt:NullBindingConverter x:Key="nullBindingConverter"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="900" />
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200" />
+                <RowDefinition Height="200" />
+                <RowDefinition Height="500"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Grid.Column="0">
+                <Button Command="{Binding PlayAgainCommand}" BorderThickness="0" Background="{x:Null}" >
+                    <Button.Content>
+                        <Image Source="\Media\memowee-playagain.png"/>
+                    </Button.Content>
+                    <Button.BitmapEffect>
+                        <DropShadowBitmapEffect ShadowDepth="2" Direction="320" Color="Black" Opacity="10" />
+                    </Button.BitmapEffect>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Row="0" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Viewbox Grid.Row="0">
+                    <Label Content="YOUR SCORE:" Foreground="OrangeRed" FontFamily="Comic Sans MS"  FontWeight="ExtraBold"/>
+                </Viewbox>
+                <Label Grid.Row="1" Content="{Binding Score, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource nullBindingConverter}}" FontSize="70" Foreground="OrangeRed" FontFamily="Comic Sans MS" FontWeight="ExtraBold" HorizontalAlignment="Center"/>
+            </Grid>
+
+            <Viewbox Grid.Column="1" Grid.Row="1">
+                <StackPanel  Orientation="Vertical">
+                    <Label  Foreground="DarkBlue" Content="Enter your name" FontFamily="Comic Sans MS" FontSize="35"   Height="62" Width="290" FontWeight="Bold" RenderTransformOrigin="0.691,0.38"/>
+                    <TextBox IsEnabled="{Binding TextBoxEnabled}" Text="{Binding Name}" Foreground="Black" FontFamily="Comic Sans MS" FontSize="30" Height="60" Width="400" Background="LightGray" BorderThickness="5" BorderBrush="#FF50C4EA"/>
+                    <Button Margin="10,10,10,10" IsEnabled="{Binding BtnSaveEnabled}" Content="SAVE" Command="{Binding UpdatedScoreCommand, UpdateSourceTrigger=PropertyChanged}" Foreground="DarkBlue" FontFamily="Comic Sans MS" FontSize="30" Height="60" Width="300" BorderBrush="DarkBlue" FontWeight="Bold" Background="#FF50C4EA" BorderThickness="5" />
+                </StackPanel>
+            </Viewbox>
+
+            <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Vertical" VerticalAlignment="Center" Background="Black" Margin="20,20,20,20">
+                <Label HorizontalContentAlignment="Center" Content="MemoWee's All Time Top 5 High Scores" FontSize="40" FontFamily="Comic Sans MS" Foreground="Yellow" Background="Black"/>
+
+                <ListBox VerticalAlignment="Bottom"  ItemsSource="{Binding HighScorePlayers, UpdateSourceTrigger=PropertyChanged}" FontFamily="Comic Sans MS" FontSize="18" FontWeight="Bold" Background="Black" Foreground="Yellow" BorderBrush="{x:Null}">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="Margin" Value="10"/>
+                            <Setter Property="Height" Value="30"/>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ListBox>
+            </StackPanel>
+
+
+            <Viewbox Grid.Row="0" Grid.Column="3">
+                <Image Source="/Media/memowee-winkwflag.png"/>
+            </Viewbox>
+
+            <Viewbox Margin="10,10,10,10" Grid.Row="2" Grid.Column="0">
+                <Image gif:ImageBehavior.AnimatedSource="{Binding GifCel1, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource nullBindingConverter}}"/>
+            </Viewbox>
+            <Viewbox Margin="10,10,10,10" Grid.Row="2" Grid.Column="2">
+                <Image gif:ImageBehavior.AnimatedSource="{Binding GifCel2, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource nullBindingConverter}}"/>
+            </Viewbox>
+
+            <Grid.Background>
+                <ImageBrush ImageSource="{Binding BackGroundByGenre, UpdateSourceTrigger=PropertyChanged}" Stretch="Fill" Opacity="0.65" />
+            </Grid.Background>
+        </Grid>
+        <Label Background="White" BorderBrush="Red" BorderThickness="10" Foreground="Red" FontFamily="Comic Sans MS" FontSize="80" Content="{Binding ThisPlayerScoreRank, UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding ShowPlayerScoreRank, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="0,193,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-18.212"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+
+    </Grid>
+</UserControl>
