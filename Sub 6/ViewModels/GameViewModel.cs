@@ -115,6 +115,7 @@ namespace Sub_6.ViewModels
             mediaPlayer.Stop();
         }
 
+
         public void StopMusic()
         {
             {
